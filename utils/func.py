@@ -12,3 +12,6 @@ def filtered_list(loaded_file):
 def sort_by_date(json_adjective):
     sorted_list = sorted(json_adjective,key=lambda x: datetime.strptime(x['date'], '%Y-%m-%dT%H:%M:%S.%f'), reverse=True)
     return sorted_list
+
+def date_format(date):
+    return f"{date[8:10]}.{date[5:7]}.{date[0:4]}"
