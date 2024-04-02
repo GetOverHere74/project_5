@@ -27,3 +27,18 @@ def get_card_number(card):
 def get_summ(money):
     return f'{money['operationAmount']["amount"]} {money["operationAmount"]["currency"]["name"]}'
 
+def load_main(num_operations=5):
+    loaded_file = loading_file('operations.json')
+    json_adjective = filtered_list(loaded_file)
+    sorted_list = sort_by_date(json_adjective)
+    for operation in sorted_list:
+        if num_operations == 0:
+            break
+        print(date_format(operation["date"]), operation["description"])
+        if operation["description"] != "Открытие вклада":
+            print(get_card_number(operation["from"]), " -> ", end='')
+        print(get_card_number(operation["to"]))
+        print(get_summ(operation),'\n')
+        num_operations -= 1
+
+load_main()
