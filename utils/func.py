@@ -24,3 +24,6 @@ def get_card_number(card):
         card_name = ' '.join(req[:-1])
         return card_name + ' ' + req[-1][:4] + ' ' + req[-1][4:6] + '** ****' + req[-1][-4:]
 
+def get_summ(money):
+    return f'{money['operationAmount']["amount"]} {money["operationAmount"]["currency"]["name"]}'
+
