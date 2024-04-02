@@ -15,3 +15,12 @@ def sort_by_date(json_adjective):
 
 def date_format(date):
     return f"{date[8:10]}.{date[5:7]}.{date[0:4]}"
+
+def get_card_number(card):
+    req = card.split()
+    if req[0] == 'Счет':
+        return 'Счет **' + card[-4:]
+    else:
+        card_name = ' '.join(req[:-1])
+        return card_name + ' ' + req[-1][:4] + ' ' + req[-1][4:6] + '** ****' + req[-1][-4:]
+
