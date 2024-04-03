@@ -18,7 +18,8 @@ def sort_by_date(json_adjective):
 
 def date_format(date):
     """Функция форматирует дату в соответствии с фильтрами"""
-    return f"{date[8:10]}.{date[5:7]}.{date[0:4]}"
+    obj_date = datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%f')
+    return datetime.strftime(obj_date, '%d.%m.%Y')
 
 def get_card_number(card):
     """Функция формирует номер карты или счета в соответствии с фильтрами"""
@@ -27,7 +28,7 @@ def get_card_number(card):
         return 'Счет **' + card[-4:]
     else:
         card_name = ' '.join(req[:-1])
-        return card_name + ' ' + req[-1][:4] + ' ' + req[-1][4:6] + '** ****' + req[-1][-4:]
+        return card_name + ' ' + req[-1][:4] + ' ' + req[-1][4:6] + '** **** ' + req[-1][-4:]
 
 def get_summ(money):
     """Функция формирует сумму в соответствии с фильтрами"""
@@ -48,4 +49,4 @@ def load_main(num_operations=5):
         print(get_summ(operation),'\n')
         num_operations -= 1
 
-load_main()
+
